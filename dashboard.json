@@ -1,0 +1,40 @@
+{
+  "links": {
+    "notionHub": "https://app.notion.com/p/cancelo10/Co-Ordination-Hub-37e644d472d7802ab14fd4c34893fc11",
+    "weeklyUpdate": "#",
+    "decisions": "#",
+    "actions": "#",
+    "themes": "#",
+    "insights": "#",
+    "monthlyBriefs": "#",
+    "driveRoot": "#"
+  },
+  "flow": [
+    {"title":"Capture source evidence","description":"Conversation, transcript, notes, reports and partner updates."},
+    {"title":"Coordinate weekly","description":"Create one traceable coordination record for the work."},
+    {"title":"Decide and assign","description":"Record decisions, owners, due dates and evidence."},
+    {"title":"Detect patterns","description":"Review recurring blockers, opportunities and themes."},
+    {"title":"Validate insight","description":"People inspect evidence before accepting interpretation."},
+    {"title":"Act collectively","description":"Approve the monthly brief, communicate and respond."}
+  ],
+  "metrics": [
+    {"value":"6","label":"Active catchment partnerships","signal":"Collective coverage"},
+    {"value":"14","label":"Open actions requiring follow-through","signal":"Delivery watch"},
+    {"value":"3","label":"Decisions awaiting review","signal":"Governance queue"},
+    {"value":"5","label":"Coordination records this month","signal":"Evidence incoming"},
+    {"value":"4","label":"Emerging themes under validation","signal":"Pattern watch"}
+  ],
+  "partnerships": [
+    {"name":"Add Partnership One","catchment":"Catchment / area","status":"Active","description":"Replace this placeholder with the partnership’s purpose, current focus and coordination context.","notionUrl":"#","driveUrl":"#","actionsUrl":"#"},
+    {"name":"Add Partnership Two","catchment":"Catchment / area","status":"Developing","description":"Each room connects the partnership workspace, Google Drive source folder and filtered action view.","notionUrl":"#","driveUrl":"#","actionsUrl":"#"},
+    {"name":"Add Partnership Three","catchment":"Catchment / area","status":"Active","description":"Use one consistent structure while keeping the experience specific to each catchment.","notionUrl":"#","driveUrl":"#","actionsUrl":"#"},
+    {"name":"Add Partnership Four","catchment":"Catchment / area","status":"Active","description":"The coded page is the front door; Notion is the engine and Drive is the evidence repository.","notionUrl":"#","driveUrl":"#","actionsUrl":"#"}
+  ],
+  "monthlyCycle": [
+    {"title":"Collect weekly evidence","timing":"Weeks 1–4"},
+    {"title":"Review decisions and actions","timing":"Month end"},
+    {"title":"Identify recurring themes","timing":"Month end"},
+    {"title":"Draft and validate insights","timing":"Human review"},
+    {"title":"Approve intelligence brief","timing":"Leadership"}
+  ]
+}
