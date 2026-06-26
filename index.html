@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CCC — Coordination & Intelligence Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --night:#0d1117;
+  --surface-1:#161b22;
+  --surface-2:#1f2937;
+  --surface-3:#263040;
+  --border:#2d3748;
+  --border-glow:#3d5a40;
+  --forest:#2d6a35;
+  --forest-bright:#4ade80;
+  --forest-dim:#1a3d20;
+  --amber:#f59e0b;
+  --amber-dim:#78450a;
+  --blue:#3b82f6;
+  --blue-dim:#1e3a5f;
+  --rose:#f43f5e;
+  --rose-dim:#5c1a2a;
+  --text-primary:#f0f6fc;
+  --text-secondary:#8b949e;
+  --text-muted:#484f58;
+  --font-display:'DM Serif Display',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+  --font-mono:'DM Mono',monospace;
+  --radius:12px;
+  --radius-sm:8px;
+  --glow:0 0 20px rgba(74,222,128,0.08);
+}
+
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--night);color:var(--text-primary);min-height:100vh;line-height:1.6}
+
+/* ── TOPBAR ── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.75rem 2rem;
+  background:rgba(13,17,23,0.92);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+}
+.topbar-left{display:flex;align-items:center;gap:0.75rem}
+.ccc-badge{
+  background:var(--forest-dim);border:1px solid var(--forest);
+  color:var(--forest-bright);font-family:var(--font-mono);font-size:11px;font-weight:500;
+  padding:4px 10px;border-radius:6px;letter-spacing:0.08em
+}
+.topbar-title{font-family:var(--font-display);font-size:1rem;color:var(--text-primary)}
+.topbar-right{display:flex;align-items:center;gap:0.75rem}
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--forest-bright);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,0.4)}50%{opacity:0.7;box-shadow:0 0 0 4px rgba(74,222,128,0)}}
+.topbar-status{font-size:11px;color:var(--text-secondary);font-family:var(--font-mono)}
+.dark-toggle{
+  background:var(--surface-2);border:1px solid var(--border);
+  color:var(--text-secondary);font-size:12px;padding:5px 12px;
+  border-radius:6px;cursor:pointer;transition:all 0.15s;font-family:var(--font-body)
+}
+.dark-toggle:hover{border-color:var(--forest-bright);color:var(--forest-bright)}
+
+/* ── HERO ── */
+.hero{
+  padding:3.5rem 2rem 2.5rem;
+  max-width:1100px;margin:0 auto;
+  border-bottom:1px solid var(--border);
+}
+.hero-eyebrow{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--forest-bright);margin-bottom:1rem;
+  display:flex;align-items:center;gap:0.5rem
+}
+.hero-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--forest-bright)}
+.hero-title{
+  font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);
+  font-weight:400;color:var(--text-primary);line-height:1.15;margin-bottom:0.75rem
+}
+.hero-title em{font-style:italic;color:var(--forest-bright)}
+.hero-sub{font-size:0.95rem;color:var(--text-secondary);max-width:580px;line-height:1.7;margin-bottom:2rem}
+
+/* ── FLOW ── */
+.flow{
+  display:flex;align-items:center;gap:0;
+  flex-wrap:wrap;row-gap:0.5rem;margin-bottom:0
+}
+.flow-step{
+  display:flex;align-items:center;gap:0.4rem;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:0.05em;
+  color:var(--text-muted);text-transform:uppercase
+}
+.flow-step.active{color:var(--forest-bright)}
+.flow-dot{width:6px;height:6px;border-radius:50%;background:var(--text-muted)}
+.flow-step.active .flow-dot{background:var(--forest-bright)}
+.flow-arrow{font-size:10px;color:var(--text-muted);margin:0 0.4rem}
+
+/* ── MAIN ── */
+.main{max-width:1100px;margin:0 auto;padding:2rem}
+
+/* ── SECTION HEADERS ── */
+.section-label{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem;
+  padding-bottom:0.75rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between
+}
+.section-label span{color:var(--forest-bright)}
+
+/* ── DESK ── */
+.desk{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:3rem}
+
+.desk-card{
+  background:var(--surface-1);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.25rem 1.25rem 1rem;
+  cursor:pointer;text-decoration:none;
+  transition:border-color 0.15s,background 0.15s,transform 0.15s;
+  display:flex;flex-direction:column;gap:0.5rem;
+  position:relative;overflow:hidden
+}
+.desk-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--accent,var(--forest));opacity:0;transition:opacity 0.15s
+}
+.desk-card:hover{border-color:var(--accent,var(--forest));background:var(--surface-2);transform:translateY(-1px)}
+.desk-card:hover::before{opacity:1}
+.desk-card[data-accent="green"]{--accent:var(--forest-bright)}
+.desk-card[data-accent="amber"]{--accent:var(--amber)}
+.desk-card[data-accent="blue"]{--accent:var(--blue)}
+
+.desk-icon{font-size:1.3rem;margin-bottom:0.25rem}
+.desk-name{font-size:0.92rem;font-weight:600;color:var(--text-primary)}
+.desk-desc{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.desk-arrow{
+  margin-top:auto;padding-top:0.75rem;
+  font-size:11px;color:var(--text-muted);font-family:var(--font-mono);
+  display:flex;align-items:center;gap:0.3rem
+}
+
+/* ── PARTNERSHIPS ── */
+.partnerships{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-bottom:3rem}
+
+.p-card{
+  background:var(--surface-1);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  transition:border-color 0.15s,box-shadow 0.15s
+}
+.p-card:hover{border-color:var(--border-glow);box-shadow:var(--glow)}
+
+.p-card-header{
+  padding:1.1rem 1.25rem 0.9rem;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem
+}
+.p-card-name{font-family:var(--font-display);font-size:1rem;color:var(--text-primary);line-height:1.3}
+.p-card-id{
+  font-family:var(--font-mono);font-size:10px;color:var(--forest-bright);
+  background:var(--forest-dim);border:1px solid var(--forest);
+  padding:2px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0
+}
+
+.p-card-meta{
+  padding:0.75rem 1.25rem;
+  display:flex;gap:1.5rem;
+  border-bottom:1px solid var(--border)
+}
+.p-meta-item{display:flex;flex-direction:column;gap:2px}
+.p-meta-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;font-family:var(--font-mono)}
+.p-meta-value{font-size:12px;color:var(--text-secondary)}
+
+.p-card-actions{
+  padding:0.85rem 1.25rem;
+  display:flex;gap:0.5rem;flex-wrap:wrap
+}
+.p-btn{
+  font-size:11px;font-weight:500;padding:5px 12px;border-radius:6px;
+  cursor:pointer;text-decoration:none;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--text-secondary);
+  transition:all 0.15s;font-family:var(--font-body);
+  display:inline-flex;align-items:center;gap:4px
+}
+.p-btn:hover{border-color:var(--forest-bright);color:var(--forest-bright);background:var(--forest-dim)}
+.p-btn.primary{background:var(--forest-dim);border-color:var(--forest);color:var(--forest-bright)}
+.p-btn.primary:hover{background:var(--forest);color:#fff}
+
+/* ── INTELLIGENCE ── */
+.intel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:3rem}
+
+.intel-card{
+  background:var(--surface-1);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.25rem;
+  display:flex;flex-direction:column;gap:0.6rem
+}
+.intel-card-icon{font-size:1.4rem}
+.intel-card-title{font-family:var(--font-display);font-size:1rem;color:var(--text-primary)}
+.intel-card-desc{font-size:12px;color:var(--text-secondary);line-height:1.6;flex:1}
+.intel-card-link{
+  font-size:11px;color:var(--text-muted);font-family:var(--font-mono);
+  text-decoration:none;display:inline-flex;align-items:center;gap:4px;
+  padding-top:0.75rem;border-top:1px solid var(--border);
+  transition:color 0.15s
+}
+.intel-card-link:hover{color:var(--amber)}
+
+/* ── CYCLE ── */
+.cycle{
+  background:var(--surface-1);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.5rem;margin-bottom:3rem
+}
+.cycle-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  margin-top:1.25rem;position:relative
+}
+.cycle-steps::before{
+  content:'';position:absolute;top:20px;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,var(--forest-dim),var(--forest),var(--forest-dim));
+  z-index:0
+}
+.cycle-step{
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+  padding:0 0.5rem;text-align:center;position:relative;z-index:1
+}
+.cycle-num{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--surface-2);border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);font-size:12px;font-weight:500;
+  color:var(--text-muted);transition:all 0.15s
+}
+.cycle-step.done .cycle-num{background:var(--forest-dim);border-color:var(--forest);color:var(--forest-bright)}
+.cycle-step-title{font-size:11px;font-weight:600;color:var(--text-secondary)}
+.cycle-step-sub{font-size:10px;color:var(--text-muted);line-height:1.4}
+
+/* ── FOOTER ── */
+.footer{
+  text-align:center;padding:2rem;
+  border-top:1px solid var(--border);
+  font-size:11px;color:var(--text-muted);font-family:var(--font-mono)
+}
+.footer strong{color:var(--forest-bright)}
+
+/* ── LIGHT MODE ── */
+body.light{
+  --night:#f8f9fa;--surface-1:#ffffff;--surface-2:#f1f5f9;--surface-3:#e2e8f0;
+  --border:#e2e8f0;--border-glow:#bbf7d0;
+  --text-primary:#0f172a;--text-secondary:#475569;--text-muted:#94a3b8;
+  --forest-dim:#dcfce7;--forest-bright:#16a34a;--forest:#22c55e
+}
+body.light .topbar{background:rgba(248,249,250,0.95)}
+body.light .cycle-steps::before{background:linear-gradient(90deg,#dcfce7,#22c55e,#dcfce7)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .topbar{padding:0.6rem 1rem}
+  .hero{padding:2rem 1rem 1.5rem}
+  .main{padding:1.25rem 1rem}
+  .desk{grid-template-columns:1fr}
+  .intel-grid{grid-template-columns:1fr}
+  .cycle-steps{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .cycle-steps::before{display:none}
+  .partnerships{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <span class="ccc-badge">CCC</span>
+    <span class="topbar-title">Coordination & Intelligence Hub</span>
+  </div>
+  <div class="topbar-right">
+    <div class="pulse-dot"></div>
+    <span class="topbar-status">3 partnerships active</span>
+    <button class="dark-toggle" onclick="document.body.classList.toggle('light');this.textContent=document.body.classList.contains('light')?'◐ Dark mode':'☀ Light mode'">☀ Light mode</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Cross-Catchment Collective</p>
+  <h1 class="hero-title">Where partnership activity becomes<br><em>traceable collective intelligence.</em></h1>
+  <p class="hero-sub">Capture conversations. Coordinate work. Detect patterns. Develop insight. Act collectively. This hub connects what's happening across catchments into one coherent picture.</p>
+  <div class="flow">
+    <div class="flow-step active"><div class="flow-dot"></div>Conversation</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step active"><div class="flow-dot"></div>Transcript</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step active"><div class="flow-dot"></div>Meeting Notes</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-dot"></div>Weekly Update</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-dot"></div>Monthly Synthesis</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-dot"></div>Emerging Themes</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-dot"></div>Wisdom Statements</div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- COORDINATION DESK -->
+  <div class="section-label">Coordination Desk <span>Weekly actions</span></div>
+  <div class="desk">
+    <a class="desk-card" data-accent="green" href="https://app.notion.com/p/37e644d472d7802ab14fd4c34893fc11" target="_blank" rel="noopener">
+      <div class="desk-icon">📋</div>
+      <div class="desk-name">Record a Weekly Update</div>
+      <div class="desk-desc">Log a coordination meeting. Add transcript link, meeting notes link, and weekly update for a partnership.</div>
+      <div class="desk-arrow">Open Coordination Records →</div>
+    </a>
+    <a class="desk-card" data-accent="amber" href="https://app.notion.com/p/37e644d472d7802ab14fd4c34893fc11" target="_blank" rel="noopener">
+      <div class="desk-icon">⚡</div>
+      <div class="desk-name">Record a Decision</div>
+      <div class="desk-desc">Capture a decision made in a meeting — who owns it, the status, and when it needs to be reviewed.</div>
+      <div class="desk-arrow">Open Decisions →</div>
+    </a>
+    <a class="desk-card" data-accent="blue" href="https://app.notion.com/p/37e644d472d7802ab14fd4c34893fc11" target="_blank" rel="noopener">
+      <div class="desk-icon">✅</div>
+      <div class="desk-name">Assign an Action</div>
+      <div class="desk-desc">Create an action item with an owner, due date, and status. Link it back to the meeting that generated it.</div>
+      <div class="desk-arrow">Open Actions →</div>
+    </a>
+  </div>
+
+  <!-- PARTNERSHIP ROOMS -->
+  <div class="section-label">Partnership Rooms <span>3 active</span></div>
+  <div class="partnerships">
+
+    <div class="p-card">
+      <div class="p-card-header">
+        <div class="p-card-name">Umngeni Ecological Infrastructure Partnership</div>
+        <span class="p-card-id">UEIP</span>
+      </div>
+      <div class="p-card-meta">
+        <div class="p-meta-item"><span class="p-meta-label">Catchment</span><span class="p-meta-value">uMngeni</span></div>
+        <div class="p-meta-item"><span class="p-meta-label">Status</span><span class="p-meta-value" style="color:var(--forest-bright)">● Active</span></div>
+      </div>
+      <div class="p-card-actions">
+        <a class="p-btn primary" href="https://app.notion.com/p/37d644d472d780698d03d3dfe0518354" target="_blank" rel="noopener">Open Room</a>
+        <a class="p-btn" href="https://app.notion.com/p/37e644d472d7802ab14fd4c34893fc11" target="_blank" rel="noopener">+ Weekly Update</a>
+        <a class="p-btn" href="https://drive.google.com" target="_blank" rel="noopener">Drive Folder</a>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-card-header">
+        <div class="p-card-name">uMhlathuze Water Stewardship Partnership</div>
+        <span class="p-card-id">UWASP</span>
+      </div>
+      <div class="p-card-meta">
+        <div class="p-meta-item"><span class="p-meta-label">Catchment</span><span class="p-meta-value">uMhlathuze</span></div>
+        <div class="p-meta-item"><span class="p-meta-label">Status</span><span class="p-meta-value" style="color:var(--forest-bright)">● Active</span></div>
+      </div>
+      <div class="p-card-actions">
+        <a class="p-btn primary" href="https://app.notion.com/p/37d644d472d780ee9d23fcd225ed1c85" target="_blank" rel="noopener">Open Room</a>
+        <a class="p-btn" href="https://app.notion.com/p/37e644d472d7802ab14fd4c34893fc11" target="_blank" rel="noopener">+ Weekly Update</a>
+        <a class="p-btn" href="https://drive.google.com" target="_blank" rel="noopener">Drive Folder</a>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-card-header">
+        <div class="p-card-name">uMzimvubu Catchment Partnership</div>
+        <span class="p-card-id">UCP</span>
+      </div>
+      <div class="p-card-meta">
+        <div class="p-meta-item"><span class="p-meta-label">Catchment</span><span class="p-meta-value">uMzimvubu</span></div>
+        <div class="p-meta-item"><span class="p-meta-label">Status</span><span class="p-meta-value" style="color:var(--forest-bright)">● Active</span></div>
+      </div>
+      <div class="p-card-actions">
+        <a class="p-btn primary" href="https://app.notion.com/p/37d644d472d780aaa84af6a7c4a6e790" target="_blank" rel="noopener">Open Room</a>
+        <a class="p-btn" href="https://app.notion.com/p/37e644d472d7802ab14fd4c34893fc11" target="_blank" rel="noopener">+ Weekly Update</a>
+        <a class="p-btn" href="https://drive.google.com" target="_blank" rel="noopener">Drive Folder</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- INTELLIGENCE FLOOR -->
+  <div class="section-label">Intelligence Floor <span>Monthly review</span></div>
+  <div class="intel-grid">
+    <div class="intel-card">
+      <div class="intel-card-icon">🔍</div>
+      <div class="intel-card-title">Emerging Themes</div>
+      <div class="intel-card-desc">Patterns that are repeatedly appearing across meetings and partner updates. AI generates theme records monthly — Faye validates before they become intelligence.</div>
+      <a class="intel-card-link" href="https://app.notion.com/p/37e644d472d7802ab14fd4c34893fc11" target="_blank" rel="noopener">View Themes →</a>
+    </div>
+    <div class="intel-card">
+      <div class="intel-card-icon">💡</div>
+      <div class="intel-card-title">Emerging Insights</div>
+      <div class="intel-card-desc">Interpretations of what recurring patterns may mean for the collective. The bridge between MERL evidence and strategic understanding. Requires human validation.</div>
+      <a class="intel-card-link" href="https://app.notion.com/p/37e644d472d7802ab14fd4c34893fc11" target="_blank" rel="noopener">View Insights →</a>
+    </div>
+    <div class="intel-card">
+      <div class="intel-card-icon">📄</div>
+      <div class="intel-card-title">Monthly Intelligence Brief</div>
+      <div class="intel-card-desc">One document. AI synthesises 4–5 transcripts, meeting notes, and partner updates into top themes, tensions, opportunities, blockers, and suggested communications.</div>
+      <a class="intel-card-link" href="https://app.notion.com/p/37e644d472d7802ab14fd4c34893fc11" target="_blank" rel="noopener">View Briefs →</a>
+    </div>
+  </div>
+
+  <!-- MONTHLY CYCLE -->
+  <div class="section-label">Monthly Intelligence Cycle</div>
+  <div class="cycle">
+    <div class="cycle-steps">
+      <div class="cycle-step done">
+        <div class="cycle-num">01</div>
+        <div class="cycle-step-title">Collect Evidence</div>
+        <div class="cycle-step-sub">Transcripts, notes & partner updates logged weekly</div>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num">02</div>
+        <div class="cycle-step-title">AI Synthesis</div>
+        <div class="cycle-step-sub">Themes, tensions & opportunities extracted from evidence</div>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num">03</div>
+        <div class="cycle-step-title">Human Validation</div>
+        <div class="cycle-step-sub">Faye reviews and approves emerging insights</div>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num">04</div>
+        <div class="cycle-step-title">Brief Approved</div>
+        <div class="cycle-step-sub">Monthly intelligence brief shared with leadership</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  CCC Coordination & Intelligence Hub · Built by <strong>Green Beacons</strong> · June 2026
+</footer>
+
+</body>
+</html>
