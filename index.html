@@ -3,13 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="CCC Intelligence Hub — environmental collective governance dashboard">
+  <meta
+    name="description"
+    content="CCC Intelligence Hub — environmental collective governance dashboard"
+  >
+
   <title>CCC Intelligence Hub</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <div class="ambient ambient-one"></div>
   <div class="ambient ambient-two"></div>
@@ -17,64 +28,312 @@
   <header class="topbar">
     <a class="brand" href="#top" aria-label="CCC Intelligence Hub home">
       <span class="brand-mark" aria-hidden="true">◉</span>
-      <span><strong>CCC</strong><small>Intelligence Hub</small></span>
+
+      <span>
+        <strong>CCC</strong>
+        <small>Intelligence Hub</small>
+      </span>
     </a>
-    <nav class="topnav" aria-label="Primary">
-      <a href="#pulse">Pulse</a><a href="#partnerships">Partnerships</a><a href="#intelligence">Intelligence</a><a href="#monthly-cycle">Monthly cycle</a>
+
+    <nav class="topnav" aria-label="Primary navigation">
+      <a href="#pulse">Pulse</a>
+      <a href="#partnerships">Partnerships</a>
+      <a href="#intelligence">Intelligence</a>
+      <a href="#monthly-cycle">Monthly cycle</a>
     </nav>
-    <div class="system-status"><span class="status-light"></span>System ready</div>
+
+    <div class="system-status">
+      <span class="status-light"></span>
+      System ready
+    </div>
   </header>
 
   <main id="top">
+
+    <!-- HERO -->
     <section class="hero shell">
       <div class="hero-copy">
         <p class="eyebrow">Environmental collective governance</p>
-        <h1>See what the collective is learning.<br><span>Know what must happen next.</span></h1>
-        <p class="hero-intro">The CCC Intelligence Hub turns partnership conversations into traceable evidence, decisions, action and shared learning.</p>
+
+        <h1>
+          See what the collective is learning.
+          <br>
+          <span>Know what must happen next.</span>
+        </h1>
+
+        <p class="hero-intro">
+          The CCC Intelligence Hub turns partnership conversations into
+          traceable evidence, decisions, action and shared learning.
+        </p>
+
         <div class="hero-actions">
-          <a class="button button-primary" id="add-weekly-update" href="#" target="_blank" rel="noopener"><span>＋</span>Add weekly update</a>
-          <a class="button button-secondary" href="#partnerships">Open partnership rooms</a>
+          <a
+            class="button button-primary"
+            id="add-weekly-update"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            <span>＋</span>
+            Add weekly update
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="#partnerships"
+          >
+            Open partnership rooms
+          </a>
         </div>
       </div>
+
       <aside class="observatory-card" aria-label="Intelligence flow">
-        <div class="observatory-head"><span>Live operating model</span><span class="signal">Signal stable</span></div>
+        <div class="observatory-head">
+          <span>Live operating model</span>
+          <span class="signal">Signal stable</span>
+        </div>
+
         <ol class="flow-list" id="flow-list"></ol>
       </aside>
     </section>
 
+    <!-- QUICK ACTIONS -->
     <section class="quick-actions shell" aria-label="Quick actions">
-      <a class="action-card" id="record-decision" href="#" target="_blank" rel="noopener"><span class="action-icon">◆</span><span><small>Governance</small><strong>Record a decision</strong><em>Capture what was agreed and why.</em></span><b>↗</b></a>
-      <a class="action-card" id="assign-action" href="#" target="_blank" rel="noopener"><span class="action-icon">→</span><span><small>Delivery</small><strong>Assign an action</strong><em>Set an owner, date and evidence.</em></span><b>↗</b></a>
-      <a class="action-card" id="open-drive" href="#" target="_blank" rel="noopener"><span class="action-icon">▣</span><span><small>Evidence</small><strong>Open source repository</strong><em>Access transcripts, reports and media.</em></span><b>↗</b></a>
+
+      <a
+        class="action-card"
+        id="record-decision"
+        href="#"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="action-icon">◆</span>
+
+        <span>
+          <small>Governance</small>
+          <strong>Record a decision</strong>
+          <em>Capture what was agreed and why.</em>
+        </span>
+
+        <b>↗</b>
+      </a>
+
+      <a
+        class="action-card"
+        id="assign-action"
+        href="#"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="action-icon">→</span>
+
+        <span>
+          <small>Delivery</small>
+          <strong>Assign an action</strong>
+          <em>Set an owner, date and evidence.</em>
+        </span>
+
+        <b>↗</b>
+      </a>
+
+      <a
+        class="action-card"
+        id="open-drive"
+        href="#"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="action-icon">▣</span>
+
+        <span>
+          <small>Evidence</small>
+          <strong>Open source repository</strong>
+          <em>Access transcripts, reports and media.</em>
+        </span>
+
+        <b>↗</b>
+      </a>
+
     </section>
 
+    <!-- CURRENT PULSE -->
     <section class="shell section" id="pulse">
-      <div class="section-heading"><div><p class="eyebrow">Current pulse</p><h2>The collective at a glance</h2></div><p>Headline indicators can be updated manually now and connected to live Notion data later.</p></div>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Current pulse</p>
+          <h2>The collective at a glance</h2>
+        </div>
+
+        <p>
+          Headline indicators can be updated manually now and connected
+          to live Notion data later.
+        </p>
+      </div>
+
       <div class="metric-grid" id="metric-grid"></div>
     </section>
 
+    <!-- PARTNERSHIP ROOMS -->
     <section class="shell section" id="partnerships">
-      <div class="section-heading"><div><p class="eyebrow">Partnership rooms</p><h2>Enter the work by catchment</h2></div><p>Each room connects the partnership’s Notion view, source folder, actions and latest synthesis.</p></div>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Partnership rooms</p>
+          <h2>Enter the work by catchment</h2>
+        </div>
+
+        <p>
+          Each room connects the partnership’s Notion view, source folder,
+          actions and latest synthesis.
+        </p>
+      </div>
+
       <div class="partnership-grid" id="partnership-grid"></div>
     </section>
 
+    <!-- INTELLIGENCE -->
     <section class="shell section" id="intelligence">
-      <div class="section-heading"><div><p class="eyebrow">Pattern observatory</p><h2>From activity to intelligence</h2></div><p>AI can suggest patterns. People inspect the evidence, validate the meaning and decide what follows.</p></div>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Pattern observatory</p>
+          <h2>From activity to intelligence</h2>
+        </div>
+
+        <p>
+          AI can suggest patterns. People inspect the evidence, validate
+          the meaning and decide what follows.
+        </p>
+      </div>
+
       <div class="intelligence-grid">
-        <article class="intel-card"><div class="intel-number">01</div><span class="intel-kicker">Detect</span><h3>Emerging themes</h3><p>Recurring concerns, opportunities and signals appearing across coordination records.</p><a id="open-themes" href="#" target="_blank" rel="noopener">Open themes database <span>↗</span></a></article>
-        <article class="intel-card featured"><div class="intel-number">02</div><span class="intel-kicker">Interpret</span><h3>Emerging insights</h3><p>Evidence-based interpretations that bridge coordination work into MERL and strategy.</p><a id="open-insights" href="#" target="_blank" rel="noopener">Open insights database <span>↗</span></a></article>
-        <article class="intel-card"><div class="intel-number">03</div><span class="intel-kicker">Synthesize</span><h3>Monthly intelligence brief</h3><p>One reviewed document: tensions, opportunities, blockers, decisions and communications.</p><a id="open-briefs" href="#" target="_blank" rel="noopener">Open monthly briefs <span>↗</span></a></article>
+
+        <article class="intel-card">
+          <div class="intel-number">01</div>
+
+          <span class="intel-kicker">Detect</span>
+
+          <h3>Emerging themes</h3>
+
+          <p>
+            Recurring concerns, opportunities and signals appearing across
+            coordination records.
+          </p>
+
+          <a
+            id="open-themes"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            Open themes database
+            <span>↗</span>
+          </a>
+        </article>
+
+        <article class="intel-card featured">
+          <div class="intel-number">02</div>
+
+          <span class="intel-kicker">Interpret</span>
+
+          <h3>Emerging insights</h3>
+
+          <p>
+            Evidence-based interpretations that bridge coordination work
+            into MERL and strategy.
+          </p>
+
+          <a
+            id="open-insights"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            Open insights database
+            <span>↗</span>
+          </a>
+        </article>
+
+        <article class="intel-card">
+          <div class="intel-number">03</div>
+
+          <span class="intel-kicker">Synthesize</span>
+
+          <h3>Monthly intelligence brief</h3>
+
+          <p>
+            One reviewed document: tensions, opportunities, blockers,
+            decisions and communications.
+          </p>
+
+          <a
+            id="open-briefs"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            Open monthly briefs
+            <span>↗</span>
+          </a>
+        </article>
+
       </div>
     </section>
 
+    <!-- MONTHLY CYCLE -->
     <section class="shell section" id="monthly-cycle">
-      <div class="cycle-panel"><div class="cycle-copy"><p class="eyebrow">Monthly intelligence cycle</p><h2>Evidence in. Judgment applied. Action out.</h2><p>The system is designed to preserve traceability. Every insight should lead back to themes, coordination records, meeting notes and original evidence.</p></div><div class="cycle-track" id="cycle-track"></div></div>
+      <div class="cycle-panel">
+
+        <div class="cycle-copy">
+          <p class="eyebrow">Monthly intelligence cycle</p>
+
+          <h2>
+            Evidence in. Judgment applied. Action out.
+          </h2>
+
+          <p>
+            The system is designed to preserve traceability. Every insight
+            should lead back to themes, coordination records, meeting notes
+            and original evidence.
+          </p>
+        </div>
+
+        <div class="cycle-track" id="cycle-track"></div>
+
+      </div>
     </section>
 
-    <section class="shell principle"><div><span class="principle-label">Operating principle</span><blockquote>Notion is the intelligence map. Google Drive is the evidence repository. Human review is the authority.</blockquote></div><a class="button button-secondary" id="open-hub" href="#" target="_blank" rel="noopener">Open full Notion hub</a></section>
+    <!-- OPERATING PRINCIPLE -->
+    <section class="shell principle">
+      <div>
+        <span class="principle-label">Operating principle</span>
+
+        <blockquote>
+          Notion is the intelligence map. Google Drive is the evidence
+          repository. Human review is the authority.
+        </blockquote>
+      </div>
+
+      <a
+        class="button button-secondary"
+        id="open-hub"
+        href="#"
+        target="_blank"
+        rel="noopener"
+      >
+        Open full Notion hub
+      </a>
+    </section>
+
   </main>
 
-  <footer class="footer shell"><div><strong>Cross-Catchment Collective</strong><span>Coordination → intelligence → collective action</span></div><span>Built with Green Beacons · 2026</span></footer>
+  <footer class="footer shell">
+    <div>
+      <strong>Cross-Catchment Collective</strong>
+      <span>Coordination → intelligence → collective action</span>
+    </div>
+
+    <span>Built with Green Beacons · 2026</span>
+  </footer>
+
   <script src="js/dashboard.js"></script>
 </body>
 </html>
